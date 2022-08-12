@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
 import Feed from '../components/Feed'
+import  {useSession} from 'next-auth/react'
 
 export default function Home() {
   return (

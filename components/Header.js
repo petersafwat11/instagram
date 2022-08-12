@@ -4,10 +4,13 @@ import {FiSearch} from 'react-icons/fi'
 import {BsPlusCircle} from 'react-icons/bs'
 import {HiHome} from 'react-icons/hi'
 import myImag from '../public/11111.jpg'
+import {useSession, signIn, signOut} from 'next-auth/react'
 
 const Header = () => {
-  return (
-      
+    const {data: session, status} = useSession();
+    console.log(session);
+
+    return (
     <div className='border-b-1 sticky top-0 z-30 bg-white border-gray-300 pt-2 pb-4 shadow-md shadow-gray'>
         <div className='flex justify-between items-center max-w-6xl mx-auto mt-2 '>
                     {/*left */}
@@ -29,7 +32,11 @@ const Header = () => {
                 <HiHome className=' hover:scale-110 ease-in duration-100 mx-4 cursor-pointer' size={25}/>
                 <BsPlusCircle className='hover:scale-110 ease-in duration-100 mx-4 cursor-pointer' size={25}/>
                 <div className='mx-4 hover:scale-110 ease-in duration-100'>
-                    <Image className=' rounded-full cursor-pointer ' src={myImag} alt='/' width='60px' height='60px'/>                    
+                    {
+                        session?               
+                              <img src={ session.user.image} onClick={()=>{signOut({callbackUrl:'/'})}} className=' rounded-full cursor-pointer ' alt='/' width='60px' height='60px'/>   :
+                              <button onClick={signIn} >signin</button>                 
+                    }
                 </div>
             </div>
         </div>
