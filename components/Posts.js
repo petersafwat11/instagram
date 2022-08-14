@@ -24,7 +24,7 @@ const Posts = () => {
     <div className='my-6'>
       {
         usersPosts.map(post=>(
-            <div className='flex flex-col rounded-xl shadow-md shadow-gray-200 my-8 border-gray-200 border-opacity-60'>
+            <div key={post.id} className='flex flex-col rounded-xl shadow-md shadow-gray-200 my-8 border-gray-200 border-opacity-60'>
                 <div className='flex justify-between items-center py-4 px-3 bg-white border '>         
                     <div className='flex items-center justify-start' > 
                         <img className='p-[3px] border border-gray-300 shadow-md shadow-gray-200 w-14 h-14 rounded-full mx-4 ' src={post.userImg} />

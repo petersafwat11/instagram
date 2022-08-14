@@ -2,15 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import {getProviders, signIn, } from 'next-auth/react' 
 import Header from '../../components/Header'
-import {useSession} from 'next-auth/react'
 
 
 const signin = (props) => {
   const signInHandeler = ()=>{
     signIn('google', {callbackUrl:"http://localhost:3000/"})
   }
-  const {data: session, status} = useSession();
-  console.log(session);
 
   return (
     <div >
